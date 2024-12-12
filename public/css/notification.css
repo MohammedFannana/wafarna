@@ -1,0 +1,29 @@
+
+    body {
+        padding-top: 20px;
+    }
+    .notification-card {
+        margin-bottom: 15px;
+    }
+
+.card-title{
+    text-align: right;
+    color: #E4121F;
+    font-family: Arial, Helvetica;
+    font-size: xx-large;
+
+}
+.card-text{
+    text-align: right;
+}
+.text-center{
+    font-family: Arial, Helvetica;
+    color: #E4121F;
+    font-size: 40px;
+}
+
+.notification-card-link:hover{
+
+    background-color: #dddddd62;
+
+}

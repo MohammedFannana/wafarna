@@ -1,0 +1,238 @@
+  /* تخصيصات CSS إضافية */
+  .navbar-brand img {
+    height: 90px;
+}
+.section-1 img, .section-3 img {
+    max-width: 100%;
+    height: auto;
+}
+.section-2 .card {
+    background-color: red;
+    color: white;
+    text-align: center;
+}
+.section-2 .card img {
+    max-width: 100%;
+    height: auto;
+}
+.section-3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.section-3 .text, .section-3 .image {
+    flex: 1;
+}
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+
+.div_nav1{
+    text-align: right;
+    right: 50px;
+}
+.text_ui{
+    color: #E4121F;
+}
+
+.nav-link {
+    color: #E4121F;
+    font-family: Arial, Helvetica;
+    font-size: 23px;
+}
+.div_nav{
+    margin-right: 30px;
+}
+
+
+.ui_li{
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.navbar {
+    position: fixed; /* تثبيت الشريط في الموقع */
+    top: 0; /* تثبيته في أعلى الصفحة */
+    left: 0;
+    width: 100%; /* عرض الشريط كامل عرض الصفحة */
+    background-color: rgb(255, 255, 255); /* لون خلفية الشريط */
+    color: #E4121F; /* لون النص */
+    padding: 15px; /* مسافة داخلية */
+    text-align: center; /* محاذاة النص في الوسط */
+    z-index: 1000; /* التأكد من ظهور الشريط فوق المحتوى الآخر */
+    margin-bottom: 20px;
+}
+
+
+.btn-outline-danger{
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.me-2{
+    text-align: right;
+    margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* start sc1 */
+.product-card {
+    margin-bottom: 30px;
+    text-align: right;
+    margin-top: 150px;
+}
+.product-img {
+    height: 350px;
+    width: 100;
+    object-fit: cover;
+
+
+}
+.info-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+.info-container .info-text {
+    position: relative;
+    z-index: 1;
+    padding: 10px;
+}
+.info-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); /* شفافية */
+    z-index: 0;
+    border-radius: 10px;
+}
+.btn-whatsapp {
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+/* start footar */
+.footer {
+    background-color: #E4121F;
+    padding: 20px 0;
+}
+
+/* مقطع الصورة الخلفية */
+.footer .bg-image {
+    background: #ffffff; /* خلفية بيضاء */
+    border-radius: 50%;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer .bg-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    width: 220px; /* حجم مناسب للصورة */
+    height: 220px; /* حجم مناسب للصورة */
+}
+
+.footer .links {
+    padding: 50px 0;
+    font-family: Arial, Helvetica;
+    
+}
+
+.footer .links a {
+    display: block;
+    margin: 30px 0;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.9rem;
+ 
+
+}
+
+.footer .links a:hover {
+    text-decoration: underline;
+    color: #c2c2c2;
+}
+
+.footer .complaint-form {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius:20px;
+    text-align: right;
+    font-family: Arial, Helvetica;
+}
+
+.footer .complaint-form input,
+.footer .complaint-form textarea {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.footer .complaint-form button {
+    background-color: #E4121F;
+    color: #fff;
+    border: none;
+}
+
+.footer .complaint-form button:hover {
+    background-color: #ef3a46;
+}
+
+/* تصميم ريسبونسيف */
+@media (max-width: 768px) {
+    .footer .bg-image,
+    .footer .links,
+    .footer .complaint-form {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .footer .bg-image img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,329 @@
+body{
+font-family: 'Roboto', sans-serif;
+}
+/* start nav */
+.nav_img{
+    width: 100px;
+}
+
+.button1{
+    margin: 20px ;
+    background-color: #E4121F;
+  
+}
+
+.button2{
+    margin: 20px ;
+    background-color: #8E0022;
+    border: none;
+    
+}
+.custom-link {
+    color: #ffffff; /* لون النص الابيض */
+    text-decoration: none; /* إزالة التسطير */
+    font-weight: bold; /* جعل النص عريض */
+    font-family: Arial, Helvetica;
+    padding: 0.5em 1em; /* إضافة تباعد داخلي للزر */
+    font-size: 1rem; /* حجم الخط */
+}
+.custom-link:hover {
+    color: #d7d7d7; /* درجة مختلفة من الأبيض عند المرور فوق الرابط */
+  }
+
+
+
+.navbar {
+    position: fixed; /* تثبيت الشريط في الموقع */
+    top: 0; /* تثبيته في أعلى الصفحة */
+    left: 0;
+    width: 100%; /* عرض الشريط كامل عرض الصفحة */
+    background-color: rgb(255, 255, 255); /* لون خلفية الشريط */
+    color: #E4121F; /* لون النص */
+    padding: 15px; /* مسافة داخلية */
+    text-align: center; /* محاذاة النص في الوسط */
+    z-index: 1000; /* التأكد من ظهور الشريط فوق المحتوى الآخر */
+}
+
+
+
+
+
+/* start secsen */
+
+
+@keyframes bounceIn {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    text-align: center;
+    color: #333;
+    animation: bounceIn 1s ease-out;
+  }
+
+
+
+
+
+
+.container-custom {
+    padding: 20px;
+    margin-top: 140px;
+}
+.title-section {
+    text-align: right;
+    font-family: Arial, Helvetica;
+    animation: fadeInDown 4s forwards; /* استخدم تأثير الأنميشن */
+}
+.image-section {
+    animation: moveImage 3s infinite alternate;
+}
+@keyframes moveImage {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-20px);
+    }
+}
+.image-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+.div_1{
+    background-color: #E4121F;
+}
+
+.h1_sc{
+    color:white;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica;
+}
+
+.p1_sc{
+    color:white;
+    font-family: Arial, Helvetica;
+}
+
+
+
+
+/* start sc2 */
+.section-title {
+    color: red;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    opacity: 0; /* تأكد من عدم رؤية العنوان عند تحميل الصفحة */
+    animation: fadeInDown 4s forwards; /* استخدم تأثير الأنميشن */
+    font-family: Arial, Helvetica;
+}
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.service-box {
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-top: 10px;
+}
+.service-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.service-box img {
+    width: 100%;
+    height: 300px;
+}
+.service-box .card-body {
+    text-align: center;
+}
+.animate-text {
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+    margin-top: 10px;
+    font-family: Arial, Helvetica;
+    font-size: xx-large;
+    color: #E4121F;
+}
+
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.btn-danger{
+    margin-top: 10px ;
+}
+
+
+/* start sc2 */
+
+
+.container-custom {
+    padding: 20px;
+}
+.title-section {
+    text-align: right;
+    font-family: Arial, Helvetica;
+}
+.title-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-family: Arial, Helvetica;
+    
+}
+.title-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #E4121F;
+    animation: fadeInDown 4s forwards; /* استخدم تأثير الأنميشن */
+}
+.psc2 {
+    font-size: 1rem;
+    color: #666;
+    font-family: Arial, Helvetica;
+}
+.image-section {
+    animation: moveImage 1s infinite alternate;
+}
+@keyframes moveImage {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-20px);
+    }
+}
+.image-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* لتنعيم حواف الصورة */
+}
+/* تصميم ريسبونسيف */
+@media (max-width: 768px) {
+    .title-section {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .image-section {
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+.title_sec2{
+    color: #E4121F;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700; 
+    border-radius: 10px;
+    margin-top: 20px;
+    font-family: Arial, Helvetica;
+    animation: fadeInDown 4s forwards; /* استخدم تأثير الأنميشن */
+}
+
+/* start footar */
+.footer {
+    background-color: #E4121F;
+    padding: 20px 0;
+}
+
+/* مقطع الصورة الخلفية */
+.footer .bg-image {
+    background: #ffffff; /* خلفية بيضاء */
+    border-radius: 50%;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer .bg-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    width: 220px; /* حجم مناسب للصورة */
+    height: 220px; /* حجم مناسب للصورة */
+}
+
+.footer .links {
+    padding: 50px 0;
+    
+}
+
+.footer .links a {
+    display: block;
+    margin: 30px 0;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica;
+
+}
+
+.footer .links a:hover {
+    text-decoration: underline;
+    color: #dedede;
+}
+
+.footer .complaint-form {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius:20px;
+    font-family: Arial, Helvetica;
+
+}
+
+.footer .complaint-form input,
+.footer .complaint-form textarea {
+    margin-bottom: 10px;
+}
+
+.footer .complaint-form button {
+    background-color: #E4121F;
+    color: #fff;
+    border: none;
+}
+
+.footer .complaint-form button:hover {
+    background-color: #fb4551;
+}
+
+/* تصميم ريسبونسيف */
+@media (max-width: 768px) {
+    .footer .bg-image,
+    .footer .links,
+    .footer .complaint-form {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .footer .bg-image img {
+        width: 100px;
+        height: 100px;
+    }
+}
