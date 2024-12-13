@@ -45,7 +45,7 @@
                                     @if($unreadCount)
                                         <sup class="bg-danger text-white p-1 rounded">{{$unreadCount}}</sup>
                                     @endif
-                                 </a>
+                                </a>
                             </li>
 
                             <li class="nav-item dropdown ui_li">
