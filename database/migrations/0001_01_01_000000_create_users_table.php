@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone')->unique();
             $table->string('email')->unique();
-            $table->enum('role' , ['user' , 'admin'])->default('user');
+            $table->enum('role' , ['user' , 'admin' , 'super_admin'])->default('user');
             $table->enum('user_type' , ['customer' , 'merchant']);
             $table->bigInteger('commercial_register')->nullable()->unique(); 
             $table->string('image')->nullable();

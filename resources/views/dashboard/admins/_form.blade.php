@@ -2,18 +2,43 @@
 <div class="row" style="justify-content: flex-end;">
     <div class="col-md-6" style="margin-right: 15px;">
 
-        <div>
-            <x-form.input name="phone" class="border border-dark " type="text" label="رقم الجوال" :value="$admin->phone" autocomplete="" />
+        <!-- phone -->
+        <div class="mt-4">
+            <x-form.input name="phone" value="{{$admin->phone}}" class="border border-dark" type="text" label="الهاتف" />
         </div>
 
         <!-- name -->
         <div class="mt-4">
-            <x-form.input name="name" :value="$admin->name" class="border border-dark" type="text" label="الاسم" />
+            <x-form.input name="name" value="{{$admin->name}}" class="border border-dark" type="text" label="الاسم" />
         </div>
 
         <!-- email -->
         <div class="mt-4">
             <x-form.input name="email" :value="$admin->email" class="border border-dark" type="text" label="البريد الالكتروني" />
+        </div>
+
+
+        <div class="mt-4">
+            <label for=""> نوع الحساب </label>
+
+            <div class="form-check">
+                <label  for="merchant">
+                    تاجر
+                </label>
+                <input  type="radio" name="user_type" id="merchant"  value="merchant" @checked($admin->user_type == 'merchant')>
+            </div>
+
+            <div class="form-check">
+                <label  for="customer">
+                    زبون
+                </label>
+                <input  type="radio" name="user_type" id="customer" value="customer" @checked($admin->user_type == 'customer')>
+            </div>
+        </div>
+
+        <!-- commercial_register -->
+        <div class="mt-4">
+            <x-form.input name="commercial_register" value="{{$admin->commercial_register}}" class="border border-dark" type="text" label=" السجل التجاري(اجباري اذا نوع الحساب تاجر)" />
         </div>
 
 

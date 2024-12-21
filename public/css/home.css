@@ -159,7 +159,8 @@ button:hover {
 
 
 
-/* start sc2 */  .product-box {
+/* start sc2 */
+        .product-box {
             position: relative;
             overflow: hidden;
             border: 1px solid #ddd;
@@ -221,7 +222,6 @@ button:hover {
         .box {
             width: 100%; /* عرض الصندوق بشكل مرن */
             height: 250px; /* ارتفاع الصندوق */
-            background-image: url('../image/logo.png'); /* مسار الصورة */
             background-size: cover; /* تغطية كاملة للصندوق */
             background-position: center; /* وضع الصورة في المركز */
             background-repeat: no-repeat; /* عدم تكرار الصورة */

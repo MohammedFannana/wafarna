@@ -23,6 +23,7 @@
                 <th>#</th>
                 <th>اسم القسم</th>
                 <th> الوصف </th>
+                <th>الصورة</th>
 
                 <th colspan="2">التحكم</th>
             </thead>
@@ -34,6 +35,9 @@
                     <td>{{$category->id}}</td>
                     <td>{{$category->name}}</td>
                     <td>{{$category->discription}}</td>
+                    <td> 
+                        <img src="{{  $category->image_category_url }}" alt="" width="50" height="50">
+                    </td>
 
                     <td>
                         <a href="{{route('dashboard.category.edit',$category->id)}}">

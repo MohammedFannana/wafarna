@@ -44,11 +44,31 @@ class AppServiceProvider extends ServiceProvider
             return $user->user_type === 'merchant';
         });
 
+
         //allow only subscription merchant add new product 
         Gate::define('merchant_subscription', function (User $user) {
-            // Check if the user has a subscription that meets the criteria
-            $activeSubscription = $user->subscriptions->firstWhere('is_subscribed', true);
-            return $activeSubscription && $activeSubscription->status === 'active';
+            // Check if the user has subscriptions and if the subscriptions are not null
+            if ($user->subscriptions && $user->subscriptions->isNotEmpty()) {
+                // Check if the user has an active subscription
+                $activeSubscription = $user->subscriptions->firstWhere('is_subscribed', true);
+                return $activeSubscription && $activeSubscription->status === 'active';
+            }
+        
+            // If no subscriptions, deny access
+            return false;
+        });
+
+
+        // allow delete admin only by super_admin
+        Gate::define('allow_delete_admin' ,function(User $user){
+            return $user->role === 'super_admin';
+        });
+        
+        //
+        Gate::before(function ($user, $ability) {
+            if ($user->super_admin) {
+                return true;
+            }
         });
         
 

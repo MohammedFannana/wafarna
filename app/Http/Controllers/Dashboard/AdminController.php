@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
+
 
 class AdminController extends Controller
 {
@@ -16,7 +19,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = User::where('role', '=', 'admin')->paginate(8);
+        $admins = User::where('role', '=', 'admin')
+        ->orWhere('role', '=', 'super_admin')->paginate(8);
         return view('dashboard.admins.index', compact('admins'));
     }
 
@@ -25,9 +29,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admins.create', [
-            'admin' => new User()
-        ]);
+        $admin = new User();
+        return view('dashboard.admins.create',compact('admin'));
     }
 
     /**
@@ -37,7 +40,7 @@ class AdminController extends Controller
     {
         $request->merge([
             'role' => 'admin',
-            'user_type' => 'customer',
+    
         ]);
 
         $valideted = $request->validate([
@@ -46,12 +49,26 @@ class AdminController extends Controller
             'email' => ['required', 'email', Rule::unique('users')],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['string', 'in:admin'],
-            'user_type' => ['string', 'in:customer'],
+            'user_type' => ['string', 'in:customer,merchant'],
+            'commercial_register' => ['int' , 'nullable', Rule::requiredIf($request->user_type == 'merchant') ,  Rule::unique(User::class) ],
         ]);
 
         Hash::make($valideted['password']);
 
-        User::create($valideted);
+        
+        $user = User::create($valideted);
+
+        if($user->user_type === 'merchant'){
+            Subscription::create([
+                'user_id' => $user->id,
+                'status' => 'active',
+                'is_subscribed' => 'true',
+                'start_subscription_data' => now(),
+                'price' => '0',
+            ]);
+        }
+
+
         return redirect()->route('dashboard.admin.index')->with('success', 'تم انشاء المسؤول بنجاح');
     }
 
@@ -78,16 +95,28 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $valideted = $request->validate([
             'phone' => [Rule::unique(User::class)->ignore($id)],
             'name' => ['string', 'min:3'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($id)],
+            'commercial_register' => ['int' , 'nullable', Rule::requiredIf($request->user_type == 'merchant') ,  Rule::unique(User::class)->ignore($id) ],
+            'user_type'=> ['in:customer,merchant'],
         ]);
-
 
         $user = User::findOrFail($id);
 
         $user->update($valideted);
+
+        if($user->user_type === 'merchant'){
+            Subscription::create([
+                'user_id' => $user->id,
+                'status' => 'active',
+                'is_subscribed' => 'true',
+                'start_subscription_data' => now(),
+                'price' => '0',
+            ]);
+        }
 
         return redirect()->back()->with('success', 'تم تعديل بيانات المسؤول  بنجاح');
     }
@@ -97,6 +126,10 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Gate::allows('allow_delete_admin')) {
+            abort(403);
+        }
+
         $admin = User::findOrFail($id);
         $admin->delete();
 

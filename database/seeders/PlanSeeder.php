@@ -27,7 +27,6 @@ class PlanSeeder extends Seeder
                 'price' => '100',
                 'period' => '1'
 
-
             ],
 
             [
@@ -35,7 +34,7 @@ class PlanSeeder extends Seeder
                 'price' => '1000',
                 'period' => '12'
             ]
-            
+
 
         ]);
     }

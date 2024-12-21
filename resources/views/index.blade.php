@@ -82,7 +82,6 @@
                 background-position: center; /* وضع الصورة في المركز */
                 background-repeat: no-repeat; /* عدم تكرار الصورة */
                 border: 2px solid #000; /* إطار للصندوق (اختياري) */
-                background-image: url({{asset('image/logo.png')}}); /* مسار الصورة */
 
             }
     
@@ -161,7 +160,7 @@
                 @foreach ($categories as $category)
 
                 <div class="col-md-4">
-                    <div class="product-box box">
+                    <div class="product-box box" style="background-image: url('{{  $category->image_category_url }}');">
                     
                         <div class="product-info">
                             <h4> {{$category->name}} </h4>

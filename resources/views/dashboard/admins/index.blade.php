@@ -1,15 +1,16 @@
 <x-dashboard-layout title="لوحة التحكم">
 
 
-    @section('breadcrumb') <!-- Override into parent page dashboard page not display section parent page to show parent section use @parent   -->
-    @parent
-    <li class="breadcrumb-item active">المسؤولون</li>
-
+    @section('breadcrumb')
+        <!-- Override into parent page dashboard page not display section parent page to show parent section use @parent   -->
+        @parent
+        <li class="breadcrumb-item active">المسؤولون</li>
     @endsection
 
     <!-- Main content -->
     <div class="mb-3" style="margin-right: 8px;">
-        <a href="{{route('dashboard.admin.create')}}" class="btn btn-outline-primary" style="width: 150px"> انشاء مسؤول</a>
+        <a href="{{ route('dashboard.admin.create') }}" class="btn btn-outline-primary" style="width: 150px"> انشاء
+            مسؤول</a>
     </div>
 
 
@@ -23,50 +24,52 @@
                 <th>الاسم</th>
                 <th>رقم الجوال</th>
                 <th>البريد الالكتروني</th>
+                <th>نوع المسؤول</th>
 
                 <th colspan="3">التحكم</th>
             </thead>
 
             <tbody>
                 @forelse($admins as $admin)
+                    <tr>
+                        <td>{{ $admin->id }}</td>
+                        <td>{{ $admin->name }}</td>
+                        <td>{{ $admin->phone }}</td>
+                        <td>{{ $admin->email }}</td>
+                        <td>{{$admin->role}}</td>
 
-                <tr>
-                    <td>{{$admin->id}}</td>
-                    <td>{{$admin->name}}</td>
-                    <td>{{$admin->phone}}</td>
-                    <td>{{$admin->email}}</td>
+                        <td>
+                            <a href="{{ route('dashboard.admin.show', $admin->id) }}">
+                                <i class="fas fa-info-circle text-success fs-4"></i>
+                            </a>
+                        </td>
 
-                    <td>
-                        <a href="{{route('dashboard.admin.show',$admin->id)}}">
-                            <i class="fas fa-info-circle text-success fs-4"></i>
-                        </a>
-                    </td>
+                        <td>
+                            <a href="{{ route('dashboard.admin.edit', $admin->id) }}">
+                                <i class="fas fa-pen text-success fs-4"></i>
+                            </a>
+                        </td>
 
-                    <td>
-                        <a href="{{route('dashboard.admin.edit',$admin->id)}}">
-                            <i class="fas fa-pen text-success fs-4"></i>
-                        </a>
-                    </td>
+                        @can('allow_delete_admin')
+                            <td>
 
-                    <td>
+                                <form action="{{ route('dashboard.admin.destroy', $admin->id) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" style="border: none; background-color: transparent;">
+                                        <i class="fas fa-trash-alt fs-4 text-danger"></i>
+                                    </button>
+                                </form>
 
-                        <form action="{{route('dashboard.admin.destroy',$admin->id)}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" style="border: none; background-color: transparent;">
-                                <i class="fas fa-trash-alt fs-4 text-danger"></i>
-                            </button>
-                        </form>
+                            </td>
+                        @endcan
 
-                    </td>
-
-                </tr>
+                    </tr>
                 @empty
 
-                <tr>
-                    <td colspan="8"> لا يوجد مسؤولون. </td>
-                </tr>
-
+                    <tr>
+                        <td colspan="8"> لا يوجد مسؤولون. </td>
+                    </tr>
                 @endforelse
 
             </tbody>
@@ -77,5 +80,5 @@
 
     <!-- /.content -->
 
-    {{$admins->withQueryString()->links()}}
+    {{ $admins->withQueryString()->links() }}
 </x-dashboard-layout>

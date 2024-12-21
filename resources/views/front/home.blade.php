@@ -113,7 +113,7 @@
                 @foreach ($categories as $category)
 
                 <div class="col-md-4">
-                    <div class="product-box box">
+                    <div class="product-box box" style="background-image: url('{{  $category->image_category_url }}');">
                     
                         <div class="product-info">
                             <h4> {{$category->name}} </h4>
