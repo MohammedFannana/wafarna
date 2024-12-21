@@ -13,6 +13,6 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote')->hourly();
 
 Schedule::command(DeleteWaitingProductEndDate::class)->daily();
-Schedule::command(InactiveSubscriptionMerchant::class)->everyMinute();
+Schedule::command(InactiveSubscriptionMerchant::class)->daily();
 Schedule::command('model:prune')->monthly('03:00');
-Schedule::command(SendMotificationToExpiredSubscriptions::class)->everyMinute();
+Schedule::command(SendMotificationToExpiredSubscriptions::class)->daily();
